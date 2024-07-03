@@ -1,16 +1,12 @@
 import React from "react";
-
 import { COLORS } from "../constants";
-
 export interface Period {
     start: string | null;
     end: string | null;
 }
-
 interface CustomShortcuts {
     [key: string]: ShortcutsItem;
 }
-
 interface DefaultShortcuts {
     today?: string;
     yesterday?: string;
@@ -25,7 +21,6 @@ export interface Configs {
         apply?: string;
     };
 }
-
 export interface ShortcutsItem {
     text: string;
     daysNumber?: number;
@@ -34,25 +29,19 @@ export interface ShortcutsItem {
         end: Date | string;
     };
 }
-
 export type DateType = string | null | Date;
-
 export type DateRangeType = {
     startDate: DateType;
     endDate: DateType;
 };
-
 export type DateValueType = DateRangeType | null;
-
 export type ClassNamesTypeProp = {
     container?: (p?: object | null | undefined) => string | undefined;
     input?: (p?: object | null | undefined) => string | undefined;
     toggleButton?: (p?: object | null | undefined) => string | undefined;
     footer?: (p?: object | null | undefined) => string | undefined;
 };
-
 export type PopoverDirectionType = "up" | "down";
-
 export interface DatepickerType {
     primaryColor?: ColorKeys;
     value: DateValueType;
@@ -85,18 +74,16 @@ export interface DatepickerType {
     controlComponent?: React.FC<ControlComponentProp> | null;
     footerComponent?: React.FC | null;
 }
-
 export type ControlComponentProp = {
     setContextRef: React.Dispatch<React.SetStateAction<React.RefObject<HTMLInputElement>>>;
     showDatepicker: () => void;
     hideDatepicker: () => void;
     toggleDatepicker: () => void;
 };
-
-export type ColorKeys = (typeof COLORS)[number]; // "blue" | "orange"
-
+export type ColorKeys = (typeof COLORS)[number];
 export interface Colors {
     [key: string]: {
         [K in ColorKeys]: string;
     };
 }
+export {};

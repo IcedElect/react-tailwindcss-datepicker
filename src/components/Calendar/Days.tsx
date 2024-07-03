@@ -47,7 +47,7 @@ const Days: React.FC<Props> = ({
             const itemDate = `${calendarData.date.year()}-${calendarData.date.month() + 1}-${
                 item >= 10 ? item : "0" + item
             }`;
-            if (formatDate(dayjs()) === formatDate(dayjs(itemDate))) return "bg-accent-900";
+            if (formatDate(dayjs()) === formatDate(dayjs(itemDate))) return "text-accent-900";
             return "";
         },
         [calendarData.date, primaryColor]

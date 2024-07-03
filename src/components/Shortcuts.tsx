@@ -29,8 +29,8 @@ const ItemTemplate = React.memo((props: ItemTemplateProps) => {
     // Functions
     const getClassName: () => string = useCallback(() => {
         const textColor = "text-primary-600";
-        const textColorHover = "hover:text-white dark:hover:text-black";
-        return `text-medium whitespace-nowrap w-1/2 md:w-1/3 lg:w-auto transition-all duration-300 hover:bg-accent-900/20 p-2 rounded cursor-pointer ${textColor} ${textColorHover}`;
+        const textColorHover = "hover:text-black dark:hover:text-white";
+        return `text-medium whitespace-nowrap w-1/2 md:w-1/3 lg:w-auto transition-all duration-300 hover:bg-accent-900/20 py-2.5 px-5 cursor-pointer ${textColor} ${textColorHover}`;
     }, [primaryColor]);
 
     const chosePeriod = useCallback(
@@ -137,7 +137,7 @@ const Shortcuts: React.FC = () => {
     }, []);
 
     return shortcutOptions?.length ? (
-        <div className="md:border-b mb-3 lg:mb-0 lg:border-r lg:border-b-0 border-gray-300 dark:border-gray-700 pr-1">
+        <div className="md:border-b min-w-[200px] cursor-pointer mb-3 lg:mb-0 lg:border-r lg:border-b-0 border-primary-600/20 dark:border-primary-600/20 -ml-1">
             <ul className="w-full tracking-wide flex flex-wrap lg:flex-col pb-1 lg:pb-0">
                 {shortcutOptions.map(([key, item], index: number) =>
                     Array.isArray(item) ? (

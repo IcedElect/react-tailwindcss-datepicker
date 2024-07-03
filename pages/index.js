@@ -38,7 +38,7 @@ export default function Playground() {
         console.log("value", value);
     };
     return (
-        <div className="px-4 py-8">
+        <div className="px-4 py-8 dark">
             <Head>
                 <title>react-tailwindcss-datepicker PlayGround</title>
             </Head>

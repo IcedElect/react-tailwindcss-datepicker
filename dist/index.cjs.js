@@ -858,7 +858,7 @@ const DoubleChevronRightIcon = ({ className = "w-6 h-6" }) => {
 };
 // eslint-disable-next-line react/display-name,@typescript-eslint/ban-types
 const Arrow = React__default["default"].forwardRef((props, ref) => {
-    return (React__default["default"].createElement("div", { ref: ref, className: "absolute z-20 h-4 w-4 rotate-45 mt-0.5 ml-[1.2rem] border-l border-t border-gray-300 bg-white dark:bg-slate-800 dark:border-slate-600" }));
+    return (React__default["default"].createElement("div", { ref: ref, className: "absolute z-20 h-4 w-4 rotate-45 mt-0.5 ml-[1.2rem] border-l border-t border-gray-300 bg-white dark:bg-primary-500 dark:border-slate-600" }));
 });
 const SecondaryButton = ({ children, onClick, disabled = false }) => {
     // Contexts
@@ -889,7 +889,7 @@ const RoundedButton = ({ children, onClick, disabled, roundedFull = false, paddi
     // Functions
     const getClassName = React.useCallback(() => {
         const darkClass = "dark:text-white/70 dark:hover:bg-white/10 dark:focus:bg-white/10";
-        const activeClass = active ? "font-semibold bg-gray-50 dark:bg-white/5" : "";
+        const activeClass = active ? "font-semibold bg-gray-50/20 dark:bg-white/5" : "";
         const defaultClass = !roundedFull
             ? `w-full tracking-wide ${darkClass} ${activeClass} transition-all duration-300 px-3 ${padding} uppercase hover:bg-gray-100 rounded-md focus:ring-1`
             : `${darkClass} ${activeClass} transition-all duration-300 hover:bg-gray-100 rounded-full p-[0.45rem] focus:ring-1`;
@@ -925,7 +925,7 @@ const Days = ({ calendarData, onClickPreviousDays, onClickDay, onClickNextDays }
     const currentDateClass = React.useCallback((item) => {
         const itemDate = `${calendarData.date.year()}-${calendarData.date.month() + 1}-${item >= 10 ? item : "0" + item}`;
         if (formatDate(require$$0__default["default"]()) === formatDate(require$$0__default["default"](itemDate)))
-            return "bg-accent-900";
+            return "text-accent-900";
         return "";
     }, [calendarData.date, primaryColor]);
     const activeDateData = React.useCallback((day) => {
@@ -1186,7 +1186,7 @@ const Week = () => {
         }
         return 0;
     }, [startWeekOn]);
-    return (React__default["default"].createElement("div", { className: "grid grid-cols-7 border-b border-gray-300 dark:border-gray-700 py-2" }, DAYS.map(item => (React__default["default"].createElement("div", { key: item, className: "tracking-wide text-black dark:text-white text-center" }, ucFirst(shortString(require$$0__default["default"](`2022-11-${6 + (item + startDateModifier)}`)
+    return (React__default["default"].createElement("div", { className: "grid grid-cols-7 py-2" }, DAYS.map(item => (React__default["default"].createElement("div", { key: item, className: "tracking-wide text-black dark:text-white text-center" }, ucFirst(shortString(require$$0__default["default"](`2022-11-${6 + (item + startDateModifier)}`)
         .locale(i18n)
         .format("dd"))))))));
 };
@@ -1629,8 +1629,8 @@ const ItemTemplate = React__default["default"].memo((props) => {
     // Functions
     const getClassName = React.useCallback(() => {
         const textColor = "text-primary-600";
-        const textColorHover = "hover:text-white dark:hover:text-black";
-        return `text-medium whitespace-nowrap w-1/2 md:w-1/3 lg:w-auto transition-all duration-300 hover:bg-accent-900/20 p-2 rounded cursor-pointer ${textColor} ${textColorHover}`;
+        const textColorHover = "hover:text-black dark:hover:text-white";
+        return `text-medium whitespace-nowrap w-1/2 md:w-1/3 lg:w-auto transition-all duration-300 hover:bg-accent-900/20 py-2.5 px-5 cursor-pointer ${textColor} ${textColorHover}`;
     }, [primaryColor]);
     const chosePeriod = React.useCallback((item) => {
         if (dayHover) {
@@ -1709,7 +1709,7 @@ const Shortcuts = () => {
     const printItemText = React.useCallback((item) => {
         return item?.text ?? null;
     }, []);
-    return shortcutOptions?.length ? (React__default["default"].createElement("div", { className: "md:border-b mb-3 lg:mb-0 lg:border-r lg:border-b-0 border-gray-300 dark:border-gray-700 pr-1" },
+    return shortcutOptions?.length ? (React__default["default"].createElement("div", { className: "md:border-b min-w-[200px] cursor-pointer mb-3 lg:mb-0 lg:border-r lg:border-b-0 border-primary-600/20 dark:border-primary-600/20 -ml-1" },
         React__default["default"].createElement("ul", { className: "w-full tracking-wide flex flex-wrap lg:flex-col pb-1 lg:pb-0" }, shortcutOptions.map(([key, item], index) => Array.isArray(item) ? (item.map((item, index) => (React__default["default"].createElement(ItemTemplate, { key: index, item: item },
             React__default["default"].createElement(React__default["default"].Fragment, null, key === "past" &&
                 configs?.shortcuts &&
@@ -1741,7 +1741,7 @@ function useOnClickOutside(ref, handler) {
     }, [ref, handler]);
 }
 
-const Datepicker = ({ primaryColor = "blue", value = null, onChange, useRange = true, showFooter = false, showShortcuts = false, configs = undefined, asSingle = false, placeholder = null, separator = "~", startFrom = null, i18n = LANGUAGE, disabled = false, inputClassName = null, containerClassName = null, toggleClassName = null, toggleIcon = undefined, displayFormat = DATE_FORMAT, readOnly = false, minDate = null, maxDate = null, dateLooking = "forward", disabledDates = null, inputId, inputName, startWeekOn = "sun", classNames = undefined, popoverDirection = undefined, controlComponent = null }) => {
+const Datepicker = ({ primaryColor = "blue", value = null, onChange, useRange = true, showFooter = false, showShortcuts = false, configs = undefined, asSingle = false, placeholder = null, separator = "~", startFrom = null, i18n = LANGUAGE, disabled = false, inputClassName = null, containerClassName = null, toggleClassName = null, toggleIcon = undefined, displayFormat = DATE_FORMAT, readOnly = false, minDate = null, maxDate = null, dateLooking = "forward", disabledDates = null, inputId, inputName, startWeekOn = "sun", classNames = undefined, popoverDirection = undefined, controlComponent = null, footerComponent = null }) => {
     // Ref
     const containerRef = React.useRef(null);
     const calendarContainerRef = React.useRef(null);
@@ -2038,7 +2038,8 @@ const Datepicker = ({ primaryColor = "blue", value = null, onChange, useRange = 
                                 React__default["default"].createElement("div", { className: "flex items-center" },
                                     React__default["default"].createElement(VerticalDash, null)),
                                 React__default["default"].createElement(Calendar, { date: secondDate, onClickPrevious: previousMonthSecond, onClickNext: nextMonthSecond, changeMonth: changeSecondMonth, changeYear: changeSecondYear, minDate: minDate, maxDate: maxDate }))))),
-                    showFooter && React__default["default"].createElement(Footer, null))))));
+                    showFooter &&
+                        (footerComponent ? React__default["default"].createElement(footerComponent) : React__default["default"].createElement(Footer, null)))))));
 };
 
 var af$2 = {exports: {}};

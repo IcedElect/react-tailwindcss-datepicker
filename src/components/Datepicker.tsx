@@ -42,7 +42,8 @@ const Datepicker: React.FC<DatepickerType> = ({
     startWeekOn = "sun",
     classNames = undefined,
     popoverDirection = undefined,
-    controlComponent = null
+    controlComponent = null,
+    footerComponent = null
 }) => {
     // Ref
     const containerRef = useRef<HTMLDivElement | null>(null);
@@ -439,7 +440,8 @@ const Datepicker: React.FC<DatepickerType> = ({
                             </div>
                         </div>
 
-                        {showFooter && <Footer />}
+                        {showFooter &&
+                            (footerComponent ? React.createElement(footerComponent) : <Footer />)}
                     </div>
                 </div>
             </div>
