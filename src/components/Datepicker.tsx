@@ -386,7 +386,12 @@ const Datepicker: React.FC<DatepickerType> = ({
                         toggleDatepicker,
                     })
                 ) : (
-                    <Input setContextRef={setInputRef} />
+                    <Input 
+                        setContextRef={setInputRef} 
+                        showDatepicker={showDatepicker} 
+                        hideDatepicker={hideDatepicker}
+                        toggleDatepicker={toggleDatepicker}
+                    />
                 )}
 
                 <div

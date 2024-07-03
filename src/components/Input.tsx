@@ -6,12 +6,9 @@ import DatepickerContext from "../contexts/DatepickerContext";
 import { dateIsValid, parseFormattedDate } from "../helpers";
 
 import ToggleButton from "./ToggleButton";
+import { ControlComponentProp } from "types";
 
-type Props = {
-    setContextRef?: (ref: React.RefObject<HTMLInputElement>) => void;
-};
-
-const Input: React.FC<Props> = (e: Props) => {
+const Input: React.FC<ControlComponentProp> = (props: ControlComponentProp) => {
     // Context
     const {
         primaryColor,
@@ -164,10 +161,10 @@ const Input: React.FC<Props> = (e: Props) => {
 
     // UseEffects && UseLayoutEffect
     useEffect(() => {
-        if (inputRef && e.setContextRef && typeof e.setContextRef === "function") {
-            e.setContextRef(inputRef);
+        if (inputRef && props.setContextRef && typeof props.setContextRef === "function") {
+            props.setContextRef(inputRef);
         }
-    }, [e, inputRef]);
+    }, [props, inputRef]);
 
     useEffect(() => {
         const button = buttonRef?.current;
@@ -217,13 +214,16 @@ const Input: React.FC<Props> = (e: Props) => {
     ]);
 
     useEffect(() => {
+        const div = calendarContainer?.current;
+        const input = inputRef.current;
+
         if (div && input) {
-            input.addEventListener("focus", showCalendarContainer);
+            input.addEventListener("focus", props.showDatepicker);
         }
 
         return () => {
             if (input) {
-                input.removeEventListener("focus", showCalendarContainer);
+                input.removeEventListener("focus", props.showDatepicker);
             }
         };
     }, [calendarContainer, arrowContainer, popoverDirection]);
