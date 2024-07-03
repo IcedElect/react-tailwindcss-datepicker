@@ -6,6 +6,7 @@ import DatepickerContext from "../contexts/DatepickerContext";
 import { dateIsValid, parseFormattedDate } from "../helpers";
 
 import ToggleButton from "./ToggleButton";
+
 import { ControlComponentProp } from "types";
 
 const Input: React.FC<ControlComponentProp> = (props: ControlComponentProp) => {
