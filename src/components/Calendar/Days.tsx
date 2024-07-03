@@ -47,8 +47,7 @@ const Days: React.FC<Props> = ({
             const itemDate = `${calendarData.date.year()}-${calendarData.date.month() + 1}-${
                 item >= 10 ? item : "0" + item
             }`;
-            if (formatDate(dayjs()) === formatDate(dayjs(itemDate)))
-                return TEXT_COLOR["500"][primaryColor as keyof (typeof TEXT_COLOR)["500"]];
+            if (formatDate(dayjs()) === formatDate(dayjs(itemDate))) return "bg-accent-900";
             return "";
         },
         [calendarData.date, primaryColor]
@@ -60,15 +59,15 @@ const Days: React.FC<Props> = ({
             let className = "";
 
             if (dayjs(fullDay).isSame(period.start) && dayjs(fullDay).isSame(period.end)) {
-                className = ` ${BG_COLOR["500"][primaryColor]} text-white font-medium rounded-full`;
+                className = " bg-accent-900/20 text-white font-medium rounded-full";
             } else if (dayjs(fullDay).isSame(period.start)) {
-                className = ` ${BG_COLOR["500"][primaryColor]} text-white font-medium ${
+                className = `bg-accent-900/20 text-white font-medium ${
                     dayjs(fullDay).isSame(dayHover) && !period.end
                         ? "rounded-full"
                         : "rounded-l-full"
                 }`;
             } else if (dayjs(fullDay).isSame(period.end)) {
-                className = ` ${BG_COLOR["500"][primaryColor]} text-white font-medium ${
+                className = `bg-accent-900/20 text-white font-medium ${
                     dayjs(fullDay).isSame(dayHover) && !period.start
                         ? "rounded-full"
                         : "rounded-r-full"
@@ -92,9 +91,7 @@ const Days: React.FC<Props> = ({
 
             if (period.start && period.end) {
                 if (dayjs(fullDay).isBetween(period.start, period.end, "day", "[)")) {
-                    return ` ${BG_COLOR["100"][primaryColor]} ${currentDateClass(
-                        day
-                    )} dark:bg-white/10`;
+                    return `bg-accent-900/20 ${currentDateClass(day)} dark:bg-accent-900/20`;
                 }
             }
 
@@ -103,19 +100,15 @@ const Days: React.FC<Props> = ({
             }
 
             if (period.start && dayjs(fullDay).isBetween(period.start, dayHover, "day", "[)")) {
-                className = ` ${BG_COLOR["100"][primaryColor]} ${currentDateClass(
-                    day
-                )} dark:bg-white/10`;
+                className = ` bg-accent-900/20 ${currentDateClass(day)} dark:bg-accent-900/20`;
             }
 
             if (period.end && dayjs(fullDay).isBetween(dayHover, period.end, "day", "[)")) {
-                className = ` ${BG_COLOR["100"][primaryColor]} ${currentDateClass(
-                    day
-                )} dark:bg-white/10`;
+                className = `bg-accent-900/20 ${currentDateClass(day)} dark:bg-accent-900/20`;
             }
 
             if (dayHover === fullDay) {
-                const bgColor = BG_COLOR["500"][primaryColor];
+                const bgColor = "bg-accent-900/40";
                 className = ` transition-all duration-500 text-white font-medium ${bgColor} ${
                     period.start ? "rounded-r-full" : "rounded-l-full"
                 }`;

@@ -28,7 +28,7 @@ const ItemTemplate = React.memo((props: ItemTemplateProps) => {
     // Functions
     const getClassName: () => string = useCallback(() => {
         const textColor = "text-primary-600";
-        const textColorHover = "hover:text-white dark:hover:text-balck";
+        const textColorHover = "hover:text-white dark:hover:text-black";
         return `text-medium whitespace-nowrap w-1/2 md:w-1/3 lg:w-auto transition-all duration-300 hover:bg-accent-900/20 p-2 rounded cursor-pointer ${textColor} ${textColorHover}`;
     }, [primaryColor]);
 

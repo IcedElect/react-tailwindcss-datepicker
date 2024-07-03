@@ -1,6 +1,5 @@
 import dayjs from "dayjs";
 import React from "react";
-
 import { DateType } from "types";
 interface Props {
     date: dayjs.Dayjs;
