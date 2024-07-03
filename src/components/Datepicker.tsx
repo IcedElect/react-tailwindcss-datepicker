@@ -94,6 +94,53 @@ const Datepicker: React.FC<DatepickerType> = ({
         }
     }, []);
 
+    function showDatepicker() {
+        const div = calendarContainerRef?.current;
+        const input = inputRef.current;
+        const arrow = arrowRef?.current;
+
+        if (arrow && div && div.classList.contains("hidden")) {
+            div.classList.remove("hidden");
+            div.classList.add("block");
+
+            // window.innerWidth === 767
+            const popoverOnUp = popoverDirection == "up";
+            const popoverOnDown = popoverDirection === "down";
+            if (
+                popoverOnUp ||
+                (window.innerWidth > 767 &&
+                    window.screen.height - 100 < div.getBoundingClientRect().bottom &&
+                    !popoverOnDown)
+            ) {
+                div.classList.add("bottom-full");
+                div.classList.add("mb-2.5");
+                div.classList.remove("mt-2.5");
+                arrow.classList.add("-bottom-2");
+                arrow.classList.add("border-r");
+                arrow.classList.add("border-b");
+                arrow.classList.remove("border-l");
+                arrow.classList.remove("border-t");
+            }
+
+            setTimeout(() => {
+                div.classList.remove("translate-y-4");
+                div.classList.remove("opacity-0");
+                div.classList.add("translate-y-0");
+                div.classList.add("opacity-1");
+            }, 1);
+        }
+    }
+
+    function toggleDatepicker() {
+        const div = calendarContainerRef?.current;
+
+        if (div && div.classList.contains("hidden")) {
+            showDatepicker();
+        } else {
+            hideDatepicker();
+        }
+    }
+
     /* Start First */
     const firstGotoDate = useCallback(
         (date: dayjs.Dayjs) => {
@@ -333,7 +380,10 @@ const Datepicker: React.FC<DatepickerType> = ({
             <div className={containerClassNameOverload} ref={containerRef}>
                 {controlComponent ? (
                     React.createElement(controlComponent, {
-                        setContextRef: setInputRef
+                        setContextRef: setInputRef,
+                        showDatepicker,
+                        hideDatepicker,
+                        toggleDatepicker,
                     })
                 ) : (
                     <Input setContextRef={setInputRef} />

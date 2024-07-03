@@ -217,43 +217,6 @@ const Input: React.FC<Props> = (e: Props) => {
     ]);
 
     useEffect(() => {
-        const div = calendarContainer?.current;
-        const input = inputRef.current;
-        const arrow = arrowContainer?.current;
-
-        function showCalendarContainer() {
-            if (arrow && div && div.classList.contains("hidden")) {
-                div.classList.remove("hidden");
-                div.classList.add("block");
-
-                // window.innerWidth === 767
-                const popoverOnUp = popoverDirection == "up";
-                const popoverOnDown = popoverDirection === "down";
-                if (
-                    popoverOnUp ||
-                    (window.innerWidth > 767 &&
-                        window.screen.height - 100 < div.getBoundingClientRect().bottom &&
-                        !popoverOnDown)
-                ) {
-                    div.classList.add("bottom-full");
-                    div.classList.add("mb-2.5");
-                    div.classList.remove("mt-2.5");
-                    arrow.classList.add("-bottom-2");
-                    arrow.classList.add("border-r");
-                    arrow.classList.add("border-b");
-                    arrow.classList.remove("border-l");
-                    arrow.classList.remove("border-t");
-                }
-
-                setTimeout(() => {
-                    div.classList.remove("translate-y-4");
-                    div.classList.remove("opacity-0");
-                    div.classList.add("translate-y-0");
-                    div.classList.add("opacity-1");
-                }, 1);
-            }
-        }
-
         if (div && input) {
             input.addEventListener("focus", showCalendarContainer);
         }

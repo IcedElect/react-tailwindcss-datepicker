@@ -87,6 +87,9 @@ export interface DatepickerType {
 
 export type ControlComponentProp = {
     setContextRef: React.Dispatch<React.SetStateAction<React.RefObject<HTMLInputElement>>>;
+    showDatepicker: () => void;
+    hideDatepicker: () => void;
+    toggleDatepicker: () => void;
 };
 
 export type ColorKeys = (typeof COLORS)[number]; // "blue" | "orange"
