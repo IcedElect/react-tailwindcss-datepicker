@@ -20,6 +20,7 @@ const ItemTemplate = React.memo((props: ItemTemplateProps) => {
         changePeriod,
         updateFirstDate,
         dayHover,
+        changeInputText,
         changeDayHover,
         hideDatepicker,
         changeDatepickerValue
@@ -72,6 +73,10 @@ const ItemTemplate = React.memo((props: ItemTemplateProps) => {
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 chosePeriod(props?.item.period);
+
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                changeInputText(props?.item.text);
             }}
         >
             {children}

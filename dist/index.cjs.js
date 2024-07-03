@@ -1625,7 +1625,7 @@ const DEFAULT_SHORTCUTS = {
 
 // eslint-disable-next-line react/display-name
 const ItemTemplate = React__default["default"].memo((props) => {
-    const { primaryColor, period, changePeriod, updateFirstDate, dayHover, changeDayHover, hideDatepicker, changeDatepickerValue } = React.useContext(DatepickerContext);
+    const { primaryColor, period, changePeriod, updateFirstDate, dayHover, changeInputText, changeDayHover, hideDatepicker, changeDatepickerValue } = React.useContext(DatepickerContext);
     // Functions
     const getClassName = React.useCallback(() => {
         const textColor = "text-primary-600";
@@ -1664,6 +1664,9 @@ const ItemTemplate = React__default["default"].memo((props) => {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             chosePeriod(props?.item.period);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            changeInputText(props?.item.text);
         } }, children));
 });
 const Shortcuts = () => {
@@ -2026,7 +2029,7 @@ const Datepicker = ({ primaryColor = "blue", value = null, onChange, useRange = 
             })) : (React__default["default"].createElement(Input, { setContextRef: setInputRef, showDatepicker: showDatepicker, hideDatepicker: hideDatepicker, toggleDatepicker: toggleDatepicker })),
             React__default["default"].createElement("div", { className: "transition-all ease-out duration-300 absolute z-10 mt-1 text-sm lg:text-xs 2xl:text-sm translate-y-4 opacity-0 hidden", ref: calendarContainerRef },
                 React__default["default"].createElement(Arrow, { ref: arrowRef }),
-                React__default["default"].createElement("div", { className: "mt-2.5 shadow-sm border border-gray-300 px-1 py-0.5 bg-white dark:bg-priamry-500 dark:text-white dark:border-primary-600 rounded-lg" },
+                React__default["default"].createElement("div", { className: "mt-2.5 shadow-sm border border-gray-300 px-1 py-0.5 bg-white dark:bg-primary-500 dark:text-white dark:border-primary-600 rounded-lg" },
                     React__default["default"].createElement("div", { className: "flex flex-col lg:flex-row py-2" },
                         showShortcuts && React__default["default"].createElement(Shortcuts, null),
                         React__default["default"].createElement("div", { className: `flex items-stretch flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-1.5 ${showShortcuts ? "md:pl-2" : "md:pl-1"} pr-2 lg:pr-1` },
