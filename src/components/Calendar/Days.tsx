@@ -215,7 +215,7 @@ const Days: React.FC<Props> = ({
                     isDateDisabled(day, type) && "line-through"
                 );
             }
-            return cn(baseClass, isDateDisabled(day, type) && "line-through", "text-gray-400");
+            return cn(baseClass, isDateDisabled(day, type) && "line-through", "text-primary-600");
         },
         [activeDateData, hoverClassByDay, isDateDisabled]
     );

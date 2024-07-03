@@ -367,7 +367,7 @@ const Datepicker: React.FC<DatepickerType> = ({
     ]);
 
     const containerClassNameOverload = useMemo(() => {
-        const defaultContainerClassName = "relative w-full text-gray-700";
+        const defaultContainerClassName = "relative w-full text-primary-600";
         return typeof containerClassName === "function"
             ? containerClassName(defaultContainerClassName)
             : typeof containerClassName === "string" && containerClassName !== ""
@@ -395,12 +395,12 @@ const Datepicker: React.FC<DatepickerType> = ({
                 )}
 
                 <div
-                    className="transition-all ease-out duration-300 absolute z-10 mt-[1px] text-sm lg:text-xs 2xl:text-sm translate-y-4 opacity-0 hidden"
+                    className="transition-all ease-out duration-300 absolute z-10 mt-1 text-sm lg:text-xs 2xl:text-sm translate-y-4 opacity-0 hidden"
                     ref={calendarContainerRef}
                 >
                     <Arrow ref={arrowRef} />
 
-                    <div className="mt-2.5 shadow-sm border border-gray-300 px-1 py-0.5 bg-white dark:bg-slate-800 dark:text-white dark:border-slate-600 rounded-lg">
+                    <div className="mt-2.5 shadow-sm border border-gray-300 px-1 py-0.5 bg-white dark:bg-priamry-500 dark:text-white dark:border-primary-600 rounded-lg">
                         <div className="flex flex-col lg:flex-row py-2">
                             {showShortcuts && <Shortcuts />}
 

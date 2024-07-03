@@ -27,9 +27,9 @@ const ItemTemplate = React.memo((props: ItemTemplateProps) => {
 
     // Functions
     const getClassName: () => string = useCallback(() => {
-        const textColor = TEXT_COLOR["600"][primaryColor as keyof (typeof TEXT_COLOR)["600"]];
-        const textColorHover = TEXT_COLOR.hover[primaryColor as keyof typeof TEXT_COLOR.hover];
-        return `whitespace-nowrap w-1/2 md:w-1/3 lg:w-auto transition-all duration-300 hover:bg-gray-100 dark:hover:bg-white/10 p-2 rounded cursor-pointer ${textColor} ${textColorHover}`;
+        const textColor = 'text-primary-600';
+        const textColorHover = 'hover:text-white dark:hover:text-balck';
+        return `text-medium whitespace-nowrap w-1/2 md:w-1/3 lg:w-auto transition-all duration-300 hover:bg-accent-900/20 p-2 rounded cursor-pointer ${textColor} ${textColorHover}`;
     }, [primaryColor]);
 
     const chosePeriod = useCallback(
