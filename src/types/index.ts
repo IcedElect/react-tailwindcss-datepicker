@@ -82,7 +82,12 @@ export interface DatepickerType {
     disabledDates?: DateRangeType[] | null;
     startWeekOn?: string | null;
     popoverDirection?: PopoverDirectionType;
+    controlComponent?: React.FunctionComponent<ControlComponentProp> | null;
 }
+
+export type ControlComponentProp = {
+    setContextRef: React.Dispatch<React.SetStateAction<React.RefObject<HTMLInputElement>>>;
+};
 
 export type ColorKeys = (typeof COLORS)[number]; // "blue" | "orange"
 

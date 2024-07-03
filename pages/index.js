@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
 import Head from "next/head";
-import { useState } from "react";
+import React, { useState } from "react";
 
-import Datepicker from "../src";
+import Datepicker, { DatepickerContext } from "../src";
 import { COLORS, DATE_LOOKING_OPTIONS } from "../src/constants";
 
 export default function Playground() {
@@ -127,6 +127,7 @@ export default function Playground() {
                     //         return `p-4 border-t border-gray-600 flex flex-row flex-wrap justify-end`;
                     //     }
                     // }}
+                    controlComponent={CustomControlComponent}
                 />
             </div>
             <div className="py-4 max-w-3xl mx-auto flex flex-row flex-wrap">
@@ -497,4 +498,39 @@ export default function Playground() {
             </div>
         </div>
     );
+}
+
+function CustomControlComponent(props) {
+    const {
+        primaryColor,
+        period,
+        dayHover,
+        changeDayHover,
+        calendarContainer,
+        arrowContainer,
+        inputText,
+        changeInputText,
+        hideDatepicker,
+        changeDatepickerValue,
+        asSingle,
+        placeholder,
+        separator,
+        disabled,
+        inputClassName,
+        toggleClassName,
+        toggleIcon,
+        readOnly,
+        displayFormat,
+        inputId,
+        inputName,
+        classNames,
+        popoverDirection
+    } = React.useContext(DatepickerContext);
+
+    const openContainer = () => {
+        calendarContainer.current.classList.toggle("hidden");
+        calendarContainer.current.classList.toggle("opacity-0");
+    };
+
+    return <button onClick={openContainer}>Datepicker</button>;
 }

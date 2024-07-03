@@ -41,7 +41,8 @@ const Datepicker: React.FC<DatepickerType> = ({
     inputName,
     startWeekOn = "sun",
     classNames = undefined,
-    popoverDirection = undefined
+    popoverDirection = undefined,
+    controlComponent = null
 }) => {
     // Ref
     const containerRef = useRef<HTMLDivElement | null>(null);
@@ -330,7 +331,13 @@ const Datepicker: React.FC<DatepickerType> = ({
     return (
         <DatepickerContext.Provider value={contextValues}>
             <div className={containerClassNameOverload} ref={containerRef}>
-                <Input setContextRef={setInputRef} />
+                {controlComponent ? (
+                    React.createElement(controlComponent, {
+                        setContextRef: setInputRef
+                    })
+                ) : (
+                    <Input setContextRef={setInputRef} />
+                )}
 
                 <div
                     className="transition-all ease-out duration-300 absolute z-10 mt-[1px] text-sm lg:text-xs 2xl:text-sm translate-y-4 opacity-0 hidden"
